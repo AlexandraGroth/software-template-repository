@@ -1,0 +1,11 @@
+# Development and test dependencies — not included in the runtime container image.
+#
+# Install with:
+#   pip install -r requirements-dev.txt
+#
+# Required for:
+#   scripts/download_tcia_test_data.py  — TCIA test data download
+
+tcia_utils
+pandas
+

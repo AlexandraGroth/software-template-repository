@@ -1,0 +1,52 @@
+# =============================================================================
+# .gitignore — software-template-repository
+# Keeps large downloads, generated artifacts, secrets and IDE files out of Git.
+# =============================================================================
+
+# --- IDE / editor ---
+.idea/
+.vscode/
+*.iml
+
+# --- Python ---
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+build/
+dist/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# --- Virtual environments ---
+.venv/
+venv/
+env/
+.venv_onboarding/
+
+# --- EUCAIM MR BPE Quantification: downloaded test data & run outputs ---
+# Curated TCIA DICOM data downloaded by scripts/download_tcia_test_data.py
+third_party/
+**/third_party/tcia_test_data/
+# BPE run / onboarding results
+eucaim_mr_bpe_run/
+**/results/
+**/results.csv
+
+# --- Secrets / credentials (never commit) ---
+.env
+.env.*
+*.pem
+*.key
+*.pfx
+*.p12
+*.keystore
+.netrc
+.npmrc
+.pypirc
+
+# --- OS cruft ---
+.DS_Store
+Thumbs.db
+
