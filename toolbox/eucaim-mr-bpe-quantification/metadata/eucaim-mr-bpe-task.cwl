@@ -12,15 +12,22 @@ requirements:
   - class: DockerRequirement
     dockerPull: harbor.eucaim.cancerimage.eu/processing-tools/eucaim-mr-bpe-quantification:1.0.0
 
-# The image already defines:
-# ENTRYPOINT ["/miniforge3/envs/omnilearn/bin/python", "-m", "bpe_app.app"]
-# FEM only supplies the application arguments.
-baseCommand: []
+# The image defines the same entrypoint explicitly here so the command is not
+# hidden inside the image (see README_HRC.md "How to run" section):
+#   ENTRYPOINT ["/miniforge3/envs/omnilearn/bin/python", "-m", "bpe_app.app"]
+baseCommand:
+  - /miniforge3/envs/omnilearn/bin/python
+  - -m
+  - bpe_app.app
 
 inputs:
   - id: input_dir
     type: Directory
-    doc: Input directory containing DICOM data for one case or series.
+    doc: >
+      Either a single DICOM case/series folder, or a full EUCAIM CDM
+      Structure directory (imaging_mandatory_view.csv plus
+      dataset/imaging_data/<patient_id>/<study_uid>/<series_uid>/...) for
+      batch processing of multiple cases. See README_HRC.md for details.
     required: true
     default: null
     hidden: false

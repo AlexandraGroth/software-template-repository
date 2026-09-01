@@ -1,4 +1,6 @@
 # EUCAIM FEM workflow definition
+# NOTE: Not required for onboarding (WP6 guidance, 2026-08); provided as
+# optional supplementary documentation only.
 cwlVersion: v1.2
 class: FEMWorkflow
 
@@ -23,7 +25,11 @@ bundles:
 inputs:
   - id: input_dir
     type: Directory
-    doc: Input directory containing DICOM data for one case or series.
+    doc: >
+      Either a single DICOM case/series folder, or a full EUCAIM CDM
+      Structure directory (imaging_mandatory_view.csv plus
+      dataset/imaging_data/<patient_id>/<study_uid>/<series_uid>/...) for
+      batch processing of multiple cases. See README_HRC.md for details.
     required: true
     default: null
     hidden: false

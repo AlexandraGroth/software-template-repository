@@ -15,10 +15,16 @@ tasks:
       type: single
       doc: One task instance processes one input case or series.
 
+# NOTE: shared_inputs/shared_outputs aren't required for single-task bundles
+# (WP6 guidance, 2026-08) but are kept here for explicit bundle-level contract.
 shared_inputs:
   - id: input_dir
     type: Directory
-    doc: Input directory containing DICOM data for one case or series.
+    doc: >
+      Either a single DICOM case/series folder, or a full EUCAIM CDM
+      Structure directory (imaging_mandatory_view.csv plus
+      dataset/imaging_data/<patient_id>/<study_uid>/<series_uid>/...) for
+      batch processing of multiple cases. See README_HRC.md for details.
     required: true
     default: null
     hidden: false

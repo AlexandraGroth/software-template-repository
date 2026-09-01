@@ -296,6 +296,22 @@ After removing, the next run will pull the new version automatically.
 - **CPU-only** execution. No GPU required.
 ---
 
+## Logging and log content
+
+The application writes log messages to stdout/stderr (captured by the
+container runtime / orchestrator, e.g. JobMan or Kubernetes). Log content is
+expected to include pipeline stage progress, echoed CLI configuration,
+termination signal handling and error messages.
+
+**Statement on sensitive data:** For the current release (1.0.0), confirmed
+with the development team that the application logs do not contain
+patient-identifiable information (e.g. `PatientName`, `PatientID`,
+`PatientBirthDate`) or DICOM pixel data. Based on this, we request that
+infrastructure logs (JobMan / Docker / Kubernetes) for this tool be captured
+and made available to users and to us for debugging.
+
+---
+
 ## Contact
 
 ```
